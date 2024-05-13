@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article -a extends Model
 {
-    use HasFactory;
+    public function snippet(): Attribute {
+        return Attribute::get(function (){
+            return substr($this->body, 0, 300);
+        })
+    }
 }
