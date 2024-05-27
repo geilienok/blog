@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +20,10 @@ class DatabaseSeeder extends Seeder
             'email' => env('DEFAULT_USER_EMAIL', 'email@email.email'),
             'password' => env('DEFAULT_USER_PASSWORD_HASH', Hash::make('password')),
         ]);
+
+        $this->call(UserSeeder::class);
+        $this->call(ArticleSeeder::class);
+        $this->call(CommentSeeder::class);
+        // \App\Models\User::factory(10)->create();
     }
 }
